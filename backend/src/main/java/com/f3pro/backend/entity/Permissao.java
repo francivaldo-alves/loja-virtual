@@ -3,13 +3,12 @@ package com.f3pro.backend.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.time.LocalDate;
 import java.util.Date;
 
 @Data
 @Entity
-@Table(name = "categoria")
-public class Categoria {
+@Table(name = "permissao")
+public class Permissao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
