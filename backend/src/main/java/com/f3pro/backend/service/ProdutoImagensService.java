@@ -38,7 +38,7 @@ public class ProdutoImagensService {
                 byte[] bytes = file.getBytes();
                 String nomeImagem = String.valueOf(produto.getId()) + file.getOriginalFilename();
                 Path caminho = Paths
-                        .get("/home/f3pro/workspaces/repo-java/loja-virtual/imagens/" +nomeImagem );
+                        .get("/home/f3pro/workspaces/repo-java/loja-virtual/imagens/" + nomeImagem );
                 Files.write(caminho, bytes);
                 objeto.setNome(nomeImagem);
 

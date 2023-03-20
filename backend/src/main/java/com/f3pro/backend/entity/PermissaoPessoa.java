@@ -1,34 +1,34 @@
 package com.f3pro.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.Date;
 @Data
 @Entity
-@Table(name = "produto")
-public class Produto {
+@Table(name = "permissao-pessoa")
+public class PermissaoPessoa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String descricaoCurta;
-    private String descricaoDetalhada;
-    private Double valorCusto;
-    private Double valorVenda;
+    @ManyToOne
+    @JoinColumn(name ="idPessoa")
+    @JsonIgnore
+    private Pessoa pessoa;
 
     @ManyToOne
-    @JoinColumn(name = "idMarca")
-    private Marca marca;
-    @ManyToOne
-    @JoinColumn(name = "idCategoria")
-    private Categoria categoria;
+    @JoinColumn(name ="idPermissao")
+    private Permissao permissao;
+
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataCriacao;
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataAtualizacao;
+
 
 
 
