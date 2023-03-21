@@ -1,0 +1,16 @@
+<body class="bg-light">
+  <div class="container">
+
+      <h3 class="h3 fw-700">
+        Olá ,${nome}
+      </h3>
+      <p> ${mensagem} </p>
+      <a class="btn btn-primary p-3 fw-700" href="https://github.com/francivaldo-alves/loja-virtual">Github</a>
+    </div>
+
+    <div class="text-muted text-center my-6">
+      F3pro - Loja virtual <br>
+      desenvolvimento de sistemas <br>
+    </div>
+  </div>
+</body>

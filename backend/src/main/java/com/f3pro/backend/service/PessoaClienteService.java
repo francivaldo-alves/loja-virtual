@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 
 @Service
@@ -24,15 +26,18 @@ public class PessoaClienteService {
     @Autowired
     private EmailService emailService;
 
-    String mensagem="Cadastro realizado com sucesso. Em breve você receberá a senha de acesso através do e-mail cadastrado, " +
-            " acesse o link https://github.com/francivaldo-alves/loja-virtual!! ";
+    String mensagem="Cadastro realizado com sucesso. Em breve você receberá a senha de acesso através do e-mail cadastrado!! ";
 
     public Pessoa registrar(PessoaClienteRequestDTO pessoaClienteRequestDTO) {
         Pessoa pessoa = new PessoaClienteRequestDTO().converter(pessoaClienteRequestDTO);
         pessoa.setDataCriacao(new Date());
         Pessoa objetoNovo = pessoaRepository.saveAndFlush(pessoa);
         permissaoPessoaService.vincularPessoaPermissaoCliente(objetoNovo);
-        emailService.envioEmailTexto(objetoNovo.getEmail(),"Teste de Envido de Email ", mensagem);
+       // emailService.envioEmailTexto(objetoNovo.getEmail(),"Teste de Envido de Email ", mensagem);
+        Map<String, Object> properMap = new HashMap<>();
+        properMap.put("nome",objetoNovo.getNome());
+        properMap.put("mensagem",mensagem);
+        emailService.enviarEmailTemplate(objetoNovo.getEmail(),"Cadastro na loja do Virtual",properMap);
 
         return objetoNovo;
 

@@ -25,8 +25,10 @@ public class Pessoa {
     @Email
     private String email;
     private String senha;
+    private String codigoRecuperacaoSenha;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dataEnvioCodigo;
     private String endereco;
-
     private String cep;
     @ManyToOne
     @JoinColumn(name = "idCidade")
